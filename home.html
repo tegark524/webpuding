@@ -214,12 +214,24 @@
             text-align: left;
         }
 
+        /* --- UPDATE: INTERACTIVE CARD STYLE --- */
         .product-card {
             background: white;
             padding: 25px;
             border-radius: 20px;
             box-shadow: 0 15px 40px rgba(139, 69, 19, 0.08);
-            transition: transform 0.3s;
+            /* Transisi halus untuk semua properti */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent; /* Border transparan buat persiapan hover */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efek Hover untuk Card */
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.02); /* Naik ke atas & membesar dikit */
+            box-shadow: 0 30px 60px rgba(139, 69, 19, 0.2); /* Bayangan makin dalam */
+            border-color: var(--accent); /* Muncul border emas */
         }
 
         .pudding-img {
@@ -229,6 +241,12 @@
             border-radius: 15px;
             margin-bottom: 20px;
             background-color: #e0d0b8;
+            transition: transform 0.5s ease; /* Transisi buat gambar */
+        }
+
+        /* Efek Hover khusus Gambar di dalam Card */
+        .product-card:hover .pudding-img {
+            transform: scale(1.05); /* Gambar zoom in sedikit */
         }
 
         .price-tag {
@@ -773,5 +791,6 @@
     </script>
 
 </body>
+
 
 </html>
