@@ -222,16 +222,20 @@
             box-shadow: 0 15px 40px rgba(139, 69, 19, 0.08);
             /* Transisi halus untuk semua properti */
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid transparent; /* Border transparan buat persiapan hover */
+            border: 2px solid transparent;
+            /* Border transparan buat persiapan hover */
             position: relative;
             overflow: hidden;
         }
 
         /* Efek Hover untuk Card */
         .product-card:hover {
-            transform: translateY(-15px) scale(1.02); /* Naik ke atas & membesar dikit */
-            box-shadow: 0 30px 60px rgba(139, 69, 19, 0.2); /* Bayangan makin dalam */
-            border-color: var(--accent); /* Muncul border emas */
+            transform: translateY(-15px) scale(1.02);
+            /* Naik ke atas & membesar dikit */
+            box-shadow: 0 30px 60px rgba(139, 69, 19, 0.2);
+            /* Bayangan makin dalam */
+            border-color: var(--accent);
+            /* Muncul border emas */
         }
 
         .pudding-img {
@@ -241,12 +245,14 @@
             border-radius: 15px;
             margin-bottom: 20px;
             background-color: #e0d0b8;
-            transition: transform 0.5s ease; /* Transisi buat gambar */
+            transition: transform 0.5s ease;
+            /* Transisi buat gambar */
         }
 
         /* Efek Hover khusus Gambar di dalam Card */
         .product-card:hover .pudding-img {
-            transform: scale(1.05); /* Gambar zoom in sedikit */
+            transform: scale(1.05);
+            /* Gambar zoom in sedikit */
         }
 
         .price-tag {
@@ -424,6 +430,8 @@
             margin-top: 50px;
         }
 
+
+
         /* --- ANIMATIONS --- */
         @keyframes float {
 
@@ -554,6 +562,178 @@
 
             footer {
                 padding: 40px 20px;
+            }
+        }
+
+        /* --- ABOUT US SECTION (IMMERSIVE OVERLAY STYLE) --- */
+        .about-section {
+            padding: 80px 5%;
+            background-color: var(--cream);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .about-text h2 {
+            color: var(--primary);
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        /* Container */
+        .team-carousel {
+            flex: 1;
+            min-width: 320px;
+            /* Tinggi menyesuaikan rasio 9:16 dari lebar kartu */
+            height: 600px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* KARTU IMMERSIVE (Full Image) */
+        .team-card {
+            position: absolute;
+            width: 320px;
+            /* Lebar Kartu */
+            aspect-ratio: 9 / 16;
+            /* Kunci Rasio 9:16 */
+            background: #000;
+            border-radius: 25px;
+            /* Hapus padding agar gambar full */
+            padding: 0;
+            box-shadow: 0 25px 50px rgba(139, 69, 19, 0.25);
+            overflow: hidden;
+            /* Supaya gambar tidak keluar border */
+            opacity: 0;
+            transform: translateX(60px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            pointer-events: none;
+            border: 1px solid var(--accent);
+        }
+
+        .team-card.active {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            z-index: 2;
+            pointer-events: all;
+        }
+
+        /* Foto Full */
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Pastikan gambar menutup area tanpa gepeng */
+            display: block;
+        }
+
+        /* OVERLAY GELAP DI BAWAH */
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            /* Gradasi dari Coklat Gelap ke Transparan */
+            background: linear-gradient(to top, #2D2420 15%, rgba(45, 36, 32, 0.8) 50%, transparent 100%);
+            padding: 80px 20px 30px 20px;
+            /* Padding atas besar untuk area fade halus */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Teks di dalam Overlay */
+        .role-badge {
+            background: var(--accent);
+            /* Warna Emas */
+            color: #2D2420;
+            /* Teks Coklat Gelap */
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .team-name {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--cream);
+            /* Teks Putih Kekuningan */
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            /* Putih agak transparan */
+            margin: 0;
+            font-weight: 400;
+        }
+
+        /* Dots */
+        .carousel-dots {
+            position: absolute;
+            bottom: -30px;
+            /* Turunkan sedikit di luar kartu */
+            display: flex;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: #ccc;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.4);
+        }
+
+        @media (max-width: 768px) {
+            .team-carousel {
+                height: 550px;
+                min-width: 100%;
+            }
+
+            .team-card {
+                width: 280px;
+                /* Kecilkan dikit di HP */
             }
         }
     </style>
@@ -723,7 +903,72 @@
             </div>
         </div>
     </section>
+    <section class="about-section" id="about">
+        <div class="script-font" style="margin-bottom: 10px;">Who We Are</div>
 
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Crafting Sweet Moments Since 2025.</h2>
+                <p>
+                    <strong>Staria Pudding</strong> lahir dari semangat kolaborasi tiga mahasiswa visioner di bangku
+                    perkuliahan. Bermula dari tugas mata kuliah Kewirausahaan pada tahun 2025, kami menemukan bahwa
+                    sebuah hidangan penutup bukan hanya soal rasa manis, tetapi tentang menciptakan momen kebahagiaan
+                    yang berkesan.
+                </p>
+                <p>
+                    Didirikan oleh <strong>Stefanuel, Surya, dan Tegar</strong>, Staria berkomitmen menghadirkan puding
+                    karamel sutra dengan resep otentik tanpa kompromi. Kami percaya bahwa bahan-bahan alami dan
+                    ketulusan dalam proses pembuatan adalah kunci dari tekstur lembut yang Anda nikmati di setiap
+                    suapan.
+                </p>
+                <p style="font-style: italic; color: var(--accent); margin-top: 20px;">
+                    "From a simple university project to your favorite daily dessert."
+                </p>
+            </div>
+
+            <div class="team-carousel">
+
+                <div class="team-card active" data-index="0">
+                    <img src="stefanuel.png" alt="Stefanuel" class="profile-img"
+                        onerror="this.src='https://placehold.co/320x570/8B4513/FFFFFF?text=FOTO+STEFANUEL'">
+
+                    <div class="card-overlay">
+                        <span class="role-badge">CEO</span>
+                        <h3 class="team-name">Stefanuel</h3>
+                        <p class="team-desc">The Visionary Leader</p>
+                    </div>
+                </div>
+
+                <div class="team-card" data-index="1">
+                    <img src="surya.png" alt="Surya" class="profile-img"
+                        onerror="this.src='https://placehold.co/320x570/D4A373/FFFFFF?text=FOTO+SURYA'">
+
+                    <div class="card-overlay">
+                        <span class="role-badge">FINANCE & MARKETING</span>
+                        <h3 class="team-name">Surya</h3>
+                        <p class="team-desc">The Strategy Master</p>
+                    </div>
+                </div>
+
+                <div class="team-card" data-index="2">
+                    <img src="tegar.png" alt="Tegar" class="profile-img"
+                        onerror="this.src='https://placehold.co/320x570/2D2420/FFFFFF?text=FOTO+TEGAR'">
+
+                    <div class="card-overlay">
+                        <span class="role-badge">HEAD OF PRODUCTION</span>
+                        <h3 class="team-name">Tegar</h3>
+                        <p class="team-desc">The Taste Artisan</p>
+                    </div>
+                </div>
+
+                <div class="carousel-dots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- FOOTER -->
     <footer>
         <h2 style="color: white; margin-bottom: 20px;">STARIA.</h2>
@@ -788,9 +1033,31 @@
 
             window.open(url, '_blank');
         }
+        // --- SCRIPT OTOMATIS GANTI KARTU TIM ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.team-card');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // Reset semua slide dan dot
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Aktifkan slide target
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides; // Loop kembali ke 0 jika sudah habis
+            showSlide(currentSlide);
+        }
+
+        // Jalankan otomatis setiap 3.5 detik
+        setInterval(nextSlide, 3500);
     </script>
 
 </body>
-
 
 </html>
